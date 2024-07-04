@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Check Password <span>Strength</span></h1>
+
+    <form id="passwordForm" action="/check_strength" method="post" >
+        <label>Password:</label>
+        <input type="password" id="password" name="password" min="1" required>
+        <button type="submit">CHECK</button>
+    </form>
+
+    
+    <div class="strength-result">
+        {% if password_strength %}
+        <p id="result">{{ password_strength }}</p>
+        {% if 'Weak' in password_strength %}
+        <p class="note">Note: a strong password should be at least 8 characters long, contain both uppercase and lowercase letters, a number, and a special character.</p>
+        {% endif %}
+        {% endif %}
+    </div>
+
+    <script>  
+        document.addEventListener('DOMContentLoaded', function() {
+            let resultElement = document.getElementById('result');
+            if(resultElement){
+                let text = resultElement.textContent;
+                var color = "white";
+                if (text.includes('Weak')) {
+                color = "#EF1047";
+            } else if (text.includes('Strong')){
+                color = "#32CD32";
+            }
+            resultElement.style.color = color;
+            }
+        });
+    </script>
+
+</body>
+</html>
