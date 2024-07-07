@@ -48,13 +48,9 @@ This is a password strength checker web application built with Flask. It is desi
    https://127.0.0.1:5000
 
 ## Screenshot
-- Weak password (common):
+- Weak password:
   
 ![common password](https://i.imgur.com/8wTijyq.gif)
-
-- Weak password (no uppercase):
-
-![no uppercase password](https://i.imgur.com/Vd6DaKw.gif)
 
 - Strong password:
 
